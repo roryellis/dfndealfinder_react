@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import Specials from './components/Specials/Specials';
+import Restaurants from './components/Restaurants/Restaurants';
+import AppHeader from './components/AppHeader/AppHeader';
 import './App.css';
 
 function App() {
@@ -19,7 +22,7 @@ function App() {
 
   const [specialQueries, setSpecialQueries] = useState(specialQueriesInitial);
   const [restaurantQueries, setRestaurantQueries] = useState(restaurantQueriesInitial);
-  
+
   return (
 		<div className='App'>
 			<AppHeader className='App-header' />
