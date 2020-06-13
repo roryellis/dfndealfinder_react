@@ -15,7 +15,7 @@ function Restaurants(props) {
 						.map((key) => key + '=' + props.restaurantQueries[key])
 						.join('&');
 
-		const url = `https://dfndealfinderdjango.herokuapp.com//restaurants?${queryString}`;
+		const url = `https://dfndealfinderdjango.herokuapp.com/restaurants?${queryString}`;
 		fetch(url)
 			.then((response) => response.json())
 			.then((response) => {

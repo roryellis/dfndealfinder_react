@@ -13,7 +13,7 @@ function Specials(props) {
 			.map((key) => key + '=' + props.specialQueries[key])
 			.join('&');
 
-		const url = `https://dfndealfinderdjango.herokuapp.com//specials?${queryString}`;
+		const url = `https://dfndealfinderdjango.herokuapp.com/specials?${queryString}`;
 		fetch(url)
 			.then((response) => response.json())
 			.then((response) => {
