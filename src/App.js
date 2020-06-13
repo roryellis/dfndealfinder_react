@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Specials from './components/Specials/Specials';
 import Restaurants from './components/Restaurants/Restaurants';
 import AppHeader from './components/AppHeader/AppHeader';
-// import './App.css';
+import './App.css';
 
 function App() {
 	

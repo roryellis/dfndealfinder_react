@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function Logo(props) {
 	return (
-			<Link to="/"><h1>replace me with the logo</h1></Link>
+			<Link to="/"><img src="http://www.dallasfoodnerd.com/wp-content/uploads/2017/04/cropped-dallasfoodnerd-logo-1.jpg" alt="DallasFoodNerdLogo" /></Link>
 	);
 }
 
