@@ -13,7 +13,7 @@ function RestaurantDetail() {
 	const [specialsList, setSpecialsList] = useState();
 
 	const getRestaurant = () => {
-		const url = `http://localhost:8000/restaurants/${id}`;
+		const url = `https://dfndealfinderdjango.herokuapp.com//restaurants/${id}`;
 		fetch(url)
 			.then((response) => response.json())
 			.then((response) => {
