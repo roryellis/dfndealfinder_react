@@ -63,6 +63,7 @@ function RestaurantDetail() {
 					</p>
 					<p>{`Dining options:${diningOptionsString}`}</p>
 					<p>{`Cuisine:${cuisineOptionsString}`}</p>
+					<p>{selectedRestaurant.description}</p>
 					<a
 						href={selectedRestaurant.website_url}
 						target='_blank'
