@@ -1,54 +1,53 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
 import Spinner from 'react-bootstrap/Spinner';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
 
 import SpecialsList from '../SpecialsList/SpecialsList';
-import SpecialDetail from '../SpecialDetail/SpecialDetail';
 
 function Specials(props) {
-    const [specialsList, setSpecialsList] = useState([]);
+	const [specialsList, setSpecialsList] = useState();
 
-    const getSpecials = () => {
-        const url = `http://localhost:8000/specials`;
-        fetch(url)
-            .then((response) => response.json())
-            .then((response) => {
-                setSpecialsList(response);
-            })
-            .catch(console.error);
-    };
+	function getSpecials() {
+		let queryString = Object.keys(props.specialQueries)
+			.map((key) => key + '=' + props.specialQueries[key])
+			.join('&');
 
-    useEffect(() => {
-        getSpecials();
-        //eslint-disable-next-line
-    }, []);
+		const url = `http://localhost:8000/specials?${queryString}`;
+		fetch(url)
+			.then((response) => response.json())
+			.then((response) => {
+				setSpecialsList(response);
+			})
+			.catch(console.error);
+	}
 
-    if (specialsList[0] === undefined) {
-        return <Spinner animation='border' variant='danger' />;
-    } else {
-        console.log(specialsList);
-        return (
-            <section className='Specials-Container'>
-                <Switch>
-                    <Route
-                        path='/specials' exact
-                        render={() => {
-                            return (
-                                <SpecialsList specialQueries={props.specialQueries}
-                                    setSpecialQueries={props.setSpecialQueries}
-                                    specialQueriesInitial={props.specialQueriesInitial}
-                                    specialsList={props.specialsList} />
-                            );
-                        }}
-                    />
-                    <Route
-                        path='/specials/:id' 
-                        component={SpecialDetail}
-                    />
-                </Switch>
-            </section>
-        );
-    }
+	useEffect(() => {
+		getSpecials();
+		//eslint-disable-next-line
+	}, [props.specialQueries]);
+
+	if (specialsList === undefined) {
+		return <Spinner animation='border' variant='danger' />;
+	} else if (specialsList[0] === undefined) {
+		return (
+			<Container>
+				<h2>Sorry, No specials match your criteria</h2>
+				<Button variant='outline-danger' onClick={props.resetSpecialQueries}>
+					Reset Filters
+				</Button>
+			</Container>
+		);
+	} else {
+		return (
+			<SpecialsList
+				specialQueries={props.specialQueries}
+				setSpecialQueries={props.setSpecialQueries}
+				specialsList={specialsList}
+				resetSpecialQueries={props.resetSpecialQueries}
+			/>
+		);
+	}
 }
 
 export default Specials;

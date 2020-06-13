@@ -3,27 +3,22 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Specials from './components/Specials/Specials';
 import Restaurants from './components/Restaurants/Restaurants';
 import AppHeader from './components/AppHeader/AppHeader';
-import './App.css';
+// import './App.css';
 
 function App() {
-  const specialQueriesInitial = {
-    category : null,
-    daily_special : null,
-    special_day : null,
-    limited_time : null,
-    start_date : null,
-    end_date : null
-  }
-  const restaurantQueriesInitial = {
-    cuisine : null,
-    dining_options : null,
-    city : null,
-  }
+	
+	const [specialQueries, setSpecialQueries] = useState({});
+	const [restaurantQueries, setRestaurantQueries] = useState({});
 
-  const [specialQueries, setSpecialQueries] = useState(specialQueriesInitial);
-  const [restaurantQueries, setRestaurantQueries] = useState(restaurantQueriesInitial);
+	function resetSpecialQueries() {
+		setSpecialQueries({});
+	}
 
-  return (
+	function resetRestaurantQueries() {
+		setRestaurantQueries({});
+	}
+
+	return (
 		<div className='App'>
 			<AppHeader className='App-header' />
 			<Switch>
@@ -37,7 +32,7 @@ function App() {
 							<Specials
 								specialQueries={specialQueries}
 								setSpecialQueries={setSpecialQueries}
-								specialQueriesInitial={specialQueriesInitial}
+								resetSpecialQueries={resetSpecialQueries}
 							/>
 						);
 					}}
@@ -49,7 +44,7 @@ function App() {
 							<Restaurants
 								restaurantQueries={restaurantQueries}
 								setRestaurantQueries={setRestaurantQueries}
-								restaurantQueriesInitial={restaurantQueriesInitial}
+								resetRestaurantQueries={resetRestaurantQueries}
 							/>
 						);
 					}}
