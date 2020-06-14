@@ -102,7 +102,7 @@ function RestaurantFilters(props) {
 	return (
 		<Container>
 			<Row>
-				<Col>
+				<Col md={3} xs={6}>
 					<Dropdown onSelect={handleCuisineSelect}>
 						<Dropdown.Toggle variant='outline-secondary' id='dropdown-basic'>
 							Cuisine
@@ -111,7 +111,7 @@ function RestaurantFilters(props) {
 						<Dropdown.Menu>{cuisineDropdowns}</Dropdown.Menu>
 					</Dropdown>
 				</Col>
-				<Col>
+				<Col md={3} xs={6}>
 					<Dropdown onSelect={handleDiningSelect}>
 						<Dropdown.Toggle variant='outline-secondary' id='dropdown-basic'>
 							Dining Options
@@ -120,7 +120,7 @@ function RestaurantFilters(props) {
 						<Dropdown.Menu>{diningOptionsDropdowns}</Dropdown.Menu>
 					</Dropdown>
 				</Col>
-				<Col>
+				<Col md={3} xs={6}>
 					<Dropdown onSelect={handleCitySelect}>
 						<Dropdown.Toggle variant='outline-secondary' id='dropdown-basic'>
 							City
@@ -129,7 +129,7 @@ function RestaurantFilters(props) {
 						<Dropdown.Menu>{cityOptionsDropdowns}</Dropdown.Menu>
 					</Dropdown>
 				</Col>
-				<Col>
+				<Col md={3} xs={6}>
 					<Button
 						variant='outline-danger'
 						onClick={props.resetRestaurantQueries}>

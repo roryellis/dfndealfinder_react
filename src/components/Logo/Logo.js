@@ -3,7 +3,12 @@ import { Link } from 'react-router-dom'
 
 function Logo(props) {
 	return (
-			<Link to="/"><img src="http://www.dallasfoodnerd.com/wp-content/uploads/2017/04/cropped-dallasfoodnerd-logo-1.jpg" alt="DallasFoodNerdLogo" /></Link>
+		<Link to='/'>
+			<img
+				src='https://dfndealfinder.s3.us-east-2.amazonaws.com/images/cropped-dallasfoodnerd-logo-1.jpg'
+				alt='DallasFoodNerdLogo'
+			/>
+		</Link>
 	);
 }
 

@@ -6,28 +6,25 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
 function SpecialFilters(props) {
-
 	const [categories, setCategories] = useState([]);
 	const [dailyOptions, setDailyOptions] = useState([]);
 
-    function handleCategorySelect(e) {
-        props.setSpecialQueries({...props.specialQueries, category: e
-		})
+	function handleCategorySelect(e) {
+		props.setSpecialQueries({ ...props.specialQueries, category: e });
 	}
-	
+
 	function getCategories(list) {
 		const uniqueCategories = [];
 
 		for (let i = 0; i < list.length; i++) {
 			for (let j = 0; j < list[i].category.length; j++) {
 				if (uniqueCategories.includes(list[i].category[j]) === false) {
-					uniqueCategories.push(list[i].category[j])
+					uniqueCategories.push(list[i].category[j]);
 				}
 			}
-			
 		}
 
-		return uniqueCategories
+		return uniqueCategories;
 	}
 
 	function handleDailySelect(e) {
@@ -46,7 +43,7 @@ function SpecialFilters(props) {
 		}
 		return uniqueDailyOptions;
 	}
-	
+
 	useEffect(() => {
 		setCategories(getCategories(props.specialsList));
 		setDailyOptions(getDailyOptions(props.specialsList));
@@ -54,7 +51,11 @@ function SpecialFilters(props) {
 	}, []);
 
 	const categoryDropdowns = categories.map((category) => {
-		return <Dropdown.Item eventKey={category} key={category}>{category}</Dropdown.Item>;
+		return (
+			<Dropdown.Item eventKey={category} key={category}>
+				{category}
+			</Dropdown.Item>
+		);
 	});
 
 	const dailyOptionsDropdowns = dailyOptions.map((option) => {
@@ -65,37 +66,35 @@ function SpecialFilters(props) {
 		);
 	});
 
-    return (
-			<Container>
-				<Row>
-					<Col md={4} xs={12}>
-						<Dropdown onSelect={handleCategorySelect}>
-							<Dropdown.Toggle variant='outline-secondary' id='dropdown-basic'>
-								Category
-							</Dropdown.Toggle>
+	return (
+		<Container>
+			<Row>
+				<Col md={4} xs={6}>
+					<Dropdown onSelect={handleCategorySelect}>
+						<Dropdown.Toggle variant='outline-secondary' id='dropdown-basic'>
+							Category
+						</Dropdown.Toggle>
 
-							<Dropdown.Menu>{categoryDropdowns}</Dropdown.Menu>
-						</Dropdown>
-					</Col>
-					<Col md={4} xs={12}>
-						<Dropdown onSelect={handleDailySelect}>
-							<Dropdown.Toggle variant='outline-secondary' id='dropdown-basic'>
-								Daily Special
-							</Dropdown.Toggle>
+						<Dropdown.Menu>{categoryDropdowns}</Dropdown.Menu>
+					</Dropdown>
+				</Col>
+				<Col md={4} xs={6}>
+					<Dropdown onSelect={handleDailySelect}>
+						<Dropdown.Toggle variant='outline-secondary' id='dropdown-basic'>
+							Daily Special
+						</Dropdown.Toggle>
 
-							<Dropdown.Menu>{dailyOptionsDropdowns}</Dropdown.Menu>
-						</Dropdown>
-					</Col>
-					<Col md={4} xs={12}>
-						<Button
-							variant='outline-danger'
-							onClick={props.resetSpecialQueries}>
-							Reset Filters
-						</Button>
-					</Col>
-				</Row>
-			</Container>
-		);    
+						<Dropdown.Menu>{dailyOptionsDropdowns}</Dropdown.Menu>
+					</Dropdown>
+				</Col>
+				<Col md={4} xs={12}>
+					<Button variant='outline-danger' onClick={props.resetSpecialQueries}>
+						Reset Filters
+					</Button>
+				</Col>
+			</Row>
+		</Container>
+	);
 }
 
 export default SpecialFilters;

@@ -1,31 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import RestaurantFilters from '../RestaurantFilters/RestaurantFilters';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Spinner from 'react-bootstrap/Spinner';
-import CardColumns from 'react-bootstrap/CardColumns';
+import { Button, Container, Row, Col, Card, Spinner } from 'react-bootstrap';
 
 function RestaurantList(props) {
 	const restaurantCards = props.restaurantsList.map((restaurant) => {
 		return (
-			<Card lg={2} key={restaurant.id}>
-				<Card.Img variant='top' src={restaurant.restaurant_image} />
-				<Card.Body>
-					<Card.Title>{restaurant.name}</Card.Title>
-					<Card.Subtitle className='text-muted'>
-						{restaurant.city}
-					</Card.Subtitle>
-					<Card.Text>{restaurant.description}</Card.Text>
-					<Button
-						variant='primary'
-						as={Link}
-						to={`/restaurants/${restaurant.id}`}>
-						Restaurant Details
-					</Button>
-				</Card.Body>
-			</Card>
+			<Col sm={12} md={6} lg={4}>
+				<Card lg={2} key={restaurant.id}>
+					<Card.Img variant='top' src={restaurant.restaurant_image} />
+					<Card.Body>
+						<Card.Title>{restaurant.name}</Card.Title>
+						<Card.Subtitle className='text-muted'>
+							{restaurant.city}
+						</Card.Subtitle>
+						<Card.Text>{restaurant.description}</Card.Text>
+						<Button
+							variant='primary'
+							as={Link}
+							to={`/restaurants/${restaurant.id}`}>
+							Restaurant Details
+						</Button>
+					</Card.Body>
+				</Card>
+			</Col>
 		);
 	});
 
@@ -34,14 +32,17 @@ function RestaurantList(props) {
 	} else {
 		return (
 			<Container>
-				<RestaurantFilters
-					restaurantQueries={props.restaurantQueries}
-					setRestaurantQueries={props.setRestaurantQueries}
-					restaurantsList={props.restaurantsList}
-					resetRestaurantQueries={props.resetRestaurantQueries}
-				/>
-
-				<CardColumns>{restaurantCards}</CardColumns>
+				<Row>
+					<RestaurantFilters
+						restaurantQueries={props.restaurantQueries}
+						setRestaurantQueries={props.setRestaurantQueries}
+						restaurantsList={props.restaurantsList}
+						resetRestaurantQueries={props.resetRestaurantQueries}
+					/>
+				</Row>
+				<Row>
+					{restaurantCards}
+				</Row>
 			</Container>
 		);
 	}
