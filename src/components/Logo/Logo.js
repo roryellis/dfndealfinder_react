@@ -6,7 +6,7 @@ function Logo(props) {
 		<Link to='/'>
 			<img
 				src='https://dfndealfinder.s3.us-east-2.amazonaws.com/images/cropped-dallasfoodnerd-logo-1.jpg'
-				alt='DallasFoodNerdLogo'
+				className="logo" alt='DallasFoodNerdLogo'
 			/>
 		</Link>
 	);
