@@ -6,8 +6,8 @@ import { Button, Container, Row, Col, Card, Spinner } from 'react-bootstrap';
 function RestaurantList(props) {
 	const restaurantCards = props.restaurantsList.map((restaurant) => {
 		return (
-			<Col sm={12} md={6} lg={4}>
-				<Card lg={2} key={restaurant.id}>
+			<Col sm={12} md={6} lg={4} xl={3}>
+				<Card key={restaurant.id}>
 					<Card.Img variant='top' src={restaurant.restaurant_image} />
 					<Card.Body>
 						<Card.Title>{restaurant.name}</Card.Title>

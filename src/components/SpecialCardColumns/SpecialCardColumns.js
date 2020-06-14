@@ -7,7 +7,7 @@ import { Button, Container, Row, Col } from 'react-bootstrap';
 function SpecialCardColumns(props) {
 	const specialCards = props.specialsList.map((special) => {
 		return (
-			<Col sm={12} md={6} lg={4}>
+			<Col sm={12} md={6} lg={4} xl={3}>
 				<Card key={special.id}>
 					<Card.Img variant='top' src={special.promo_image} />
 					<Card.Body>
