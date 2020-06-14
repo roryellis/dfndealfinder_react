@@ -68,7 +68,7 @@ function SpecialFilters(props) {
     return (
 			<Container>
 				<Row>
-					<Col>
+					<Col md={4} xs={12}>
 						<Dropdown onSelect={handleCategorySelect}>
 							<Dropdown.Toggle variant='outline-secondary' id='dropdown-basic'>
 								Category
@@ -77,18 +77,16 @@ function SpecialFilters(props) {
 							<Dropdown.Menu>{categoryDropdowns}</Dropdown.Menu>
 						</Dropdown>
 					</Col>
-					<Col>
+					<Col md={4} xs={12}>
 						<Dropdown onSelect={handleDailySelect}>
 							<Dropdown.Toggle variant='outline-secondary' id='dropdown-basic'>
 								Daily Special
 							</Dropdown.Toggle>
 
-							<Dropdown.Menu>
-								{dailyOptionsDropdowns}
-							</Dropdown.Menu>
+							<Dropdown.Menu>{dailyOptionsDropdowns}</Dropdown.Menu>
 						</Dropdown>
 					</Col>
-					<Col>
+					<Col md={4} xs={12}>
 						<Button
 							variant='outline-danger'
 							onClick={props.resetSpecialQueries}>

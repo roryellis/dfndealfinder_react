@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Spinner from 'react-bootstrap/Spinner';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
+import { Spinner, Button, Container, Row } from 'react-bootstrap';
+
 
 import SpecialsList from '../SpecialsList/SpecialsList';
 
@@ -40,12 +39,14 @@ function Specials(props) {
 		);
 	} else {
 		return (
-			<SpecialsList
-				specialQueries={props.specialQueries}
-				setSpecialQueries={props.setSpecialQueries}
-				specialsList={specialsList}
-				resetSpecialQueries={props.resetSpecialQueries}
-			/>
+			<Container>
+					<SpecialsList
+						specialQueries={props.specialQueries}
+						setSpecialQueries={props.setSpecialQueries}
+						specialsList={specialsList}
+						resetSpecialQueries={props.resetSpecialQueries}
+					/>
+			</Container>
 		);
 	}
 }

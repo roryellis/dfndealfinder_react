@@ -1,14 +1,26 @@
 import React from 'react';
 import Logo from '../Logo/Logo';
 import Navigation from '../Navigation/Navigation';
-import Container from 'react-bootstrap/Container';
+import { Container, Row, Col } from 'react-bootstrap';
 
 function AppHeader(props) {
 	return (
 		<Container className='app-header'>
-            <Logo />
-			<h1>Deal Finder</h1>
-			<Navigation />
+			<Row>
+				<Col >
+					<Logo />
+				</Col>
+				</Row>
+				<Row>
+				<Col className="align-text-bottom">
+					<h1>Deal Finder</h1>
+				</Col>
+			</Row>
+			<Row>
+				<Col>
+					<Navigation />
+				</Col>
+			</Row>
 		</Container>
 	);
 }
