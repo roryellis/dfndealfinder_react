@@ -1,5 +1,4 @@
 # Dallas Food Nerd Deal Finder - ReactJS Front-end
-![Riding Weather Logo](https://raw.githubusercontent.com/roryellis/ridingweather/dev/public/logo-full.png)
 
 # Description
 
